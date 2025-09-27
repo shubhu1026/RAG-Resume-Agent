@@ -1,0 +1,15 @@
+python-dotenv
+langchain-community
+langchain-openai
+langchain-chroma
+transformers
+gradio
+notebook
+ipywidgets
+torch
+PyPDF2
+langchain 
+tiktoken 
+langchainhub 
+chromadb 
+langgraph
