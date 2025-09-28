@@ -6,7 +6,7 @@ from routing import build_routing_chain
 from langchain.output_parsers import PydanticOutputParser
 from pydantic import BaseModel, Field
 from config import MODEL_NAME, TEMPERATURE
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 
 # Graph State
 class GraphState(TypedDict):
@@ -22,6 +22,32 @@ class GradeAnswer(BaseModel):
 
 parser = PydanticOutputParser(pydantic_object=GradeAnswer)
 
+def expand_query(user_query: str, num_variations: int = 5):
+    """
+    Generate multiple perspectives for a single query using LLM.
+    """
+    prompt = f"""
+    Rephrase the following query into {num_variations} different ways.
+    Each variation should ask the question from a slightly different perspective.
+    
+    Query: "{user_query}"
+    
+    Return as a numbered list.
+    """
+    llm = ChatOpenAI(model_name=MODEL_NAME, temperature=TEMPERATURE)
+    response = llm.predict(prompt)
+    variations = []
+    for line in response.split("\n"):
+        line = line.strip()
+        if line:
+            parts = line.split(". ", 1)
+            if len(parts) == 2:
+                variations.append(parts[1].strip())
+            else:
+                variations.append(line)
+    return [v for v in variations if v]
+
+
 def build_workflow(vector_db, web_search_tool):
     workflow = StateGraph(GraphState)
     llm = ChatOpenAI(model_name=MODEL_NAME, temperature=TEMPERATURE)
@@ -29,10 +55,26 @@ def build_workflow(vector_db, web_search_tool):
     routing_chain = build_routing_chain()
 
     # ---- Nodes ----  
+    # def retrieve(state):
+    #     question = state["question"]
+    #     docs = vector_db.similarity_search(question)
+    #     return {"question": question, "documents": docs}
     def retrieve(state):
         question = state["question"]
-        docs = vector_db.similarity_search(question)
-        return {"question": question, "documents": docs}
+
+        # Expand query into multiple perspectives
+        expanded_queries = expand_query(question, num_variations=5)
+
+        # Retrieve docs for each perspective
+        retrieved_docs = []
+        for q in expanded_queries:
+            docs = vector_db.similarity_search(q, k=3)
+            retrieved_docs.extend(docs)
+
+        # Remove duplicate documents
+        unique_docs = {d.page_content: d for d in retrieved_docs}.values()
+
+        return {"question": question, "documents": list(unique_docs)}
 
     def generate(state):
         query = state["question"]

@@ -12,7 +12,7 @@ from langsmith.run_helpers import traceable
 
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 
 client = Client()
 print(f"✅ LangSmith connected. Project: {LANGCHAIN_PROJECT}")
@@ -39,12 +39,11 @@ Return a clean, concise summary that captures only the essential information for
     return chain.run(job_description).strip()
 
 
-# --- Resume + JD Processing ---
-def process_resume(file_obj, job_description):
-    """Processes resume and JD automatically when file uploaded."""
+# --- Resume Processing Only ---
+def process_resume_file(file_obj, job_description):
     if file_obj is None:
         return "⚠️ Please upload a resume file.", None, None, ""
-    
+
     llm = ChatOpenAI(model_name=MODEL_NAME, temperature=TEMPERATURE)
 
     # 1. Extract and anonymize resume
@@ -60,11 +59,19 @@ def process_resume(file_obj, job_description):
     web_search_tool = TavilySearchResults()
     app = build_workflow(vector_db, web_search_tool)
 
-    # 4. Summarize JD
-    jd_summary = summarize_job_description(job_description, llm)
+    # 4. Summarize JD (if present)
+    jd_summary = summarize_job_description(job_description, llm) if job_description else ""
 
-    return "✅ Resume processed! You can now chat with the agent.", app, metadata_dict, jd_summary
+    return "✅ Resume processed!", app, metadata_dict, jd_summary
 
+def process_job_desc(job_description, app_state, metadata_state):
+    if not app_state:
+        return "⚠️ Please upload a resume first.", app_state, metadata_state, ""
+
+    llm = ChatOpenAI(model_name=MODEL_NAME, temperature=TEMPERATURE)
+    jd_summary = summarize_job_description(job_description, llm) if job_description else ""
+
+    return "✅ Job description updated!", app_state, metadata_state, jd_summary
 
 @traceable(name="RAG-Chat-Interaction")
 def chat_fn(message, history, app_state, metadata_state, jd_state):
@@ -105,15 +112,16 @@ with gr.Blocks(title="RAG Resume Agent") as demo:
 
     # Process automatically on file upload or JD change
     resume_file.upload(
-        fn=process_resume,
+        fn=process_resume_file,
         inputs=[resume_file, job_desc],
         outputs=[status, app_state, metadata_state, jd_state]
     )
     job_desc.change(
-        fn=process_resume,
-        inputs=[resume_file, job_desc],
+        fn=process_job_desc,
+        inputs=[job_desc, app_state, metadata_state],
         outputs=[status, app_state, metadata_state, jd_state]
     )
+
 
     # Chatbot 
     chatbot = gr.ChatInterface(
