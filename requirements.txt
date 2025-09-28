@@ -13,3 +13,4 @@ tiktoken
 langchainhub 
 chromadb 
 langgraph
+chardet

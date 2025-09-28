@@ -1,5 +1,5 @@
 import gradio as gr
-from resume_processing import extract_text_from_pdf, anonymize_resume
+from resume_processing import extract_text_from_file, anonymize_resume
 from metadata_extraction import extract_metadata, convert_metadata_for_chroma
 from vectorstore import create_vectorstore
 from graph import build_workflow
@@ -47,8 +47,10 @@ def process_resume_file(file_obj, job_description):
     llm = ChatOpenAI(model_name=MODEL_NAME, temperature=TEMPERATURE)
 
     # 1. Extract and anonymize resume
-    resume_text = extract_text_from_pdf(file_obj.name)
+    resume_text = extract_text_from_file(file_obj)
     safe_text = anonymize_resume(resume_text)
+    with open("cleaned_text.txt", "w", encoding="utf-8") as f:
+        f.write(safe_text)
 
     # 2. Extract metadata
     metadata = extract_metadata(safe_text)
@@ -99,7 +101,7 @@ with gr.Blocks(title="RAG Resume Agent") as demo:
     gr.Markdown("## 📄 RAG Resume Assistant\nUpload your resume, add an optional job description, then chat!")
 
     with gr.Row():
-        resume_file = gr.File(label="Upload Resume (PDF)", file_types=[".pdf"])
+        resume_file = gr.File(label="Upload Resume (PDF)", file_types=[".pdf", ".docx"])
         job_desc = gr.Textbox(label="Job Description (Optional)", lines=5,
                               placeholder="Paste job description here...")
 
@@ -126,7 +128,8 @@ with gr.Blocks(title="RAG Resume Agent") as demo:
     # Chatbot 
     chatbot = gr.ChatInterface(
         fn=chat_fn,
-        chatbot=gr.Chatbot(label="RAG Agent"),
+        type='messages',
+        # chatbot=gr.Chatbot(label="RAG Agent"),
         additional_inputs=[app_state, metadata_state, jd_state]
     )
 

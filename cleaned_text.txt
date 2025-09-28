@@ -1,0 +1,39 @@
+Calist Dsouza
+EMAIL_REDACTED | PHONE_REDACTED |North York ON
+LinkedIn | GitHub 
+SUMMARY
+Motivated and detail-oriented developer with hands-on experience in Python, SQL, PHP, and JavaScript, and a strong foundation in data analysis, reporting, and full-stack development. Skilled at processing and transforming large datasets, building dashboards, and developing web-based tools to drive operational efficiency. Over a year of retail experience at Shell, providing insight into supply chain workflows and customer interaction. Experienced in machine learning, computer vision, and automation, with proven ability to work collaboratively and deliver practical solutions. Eager to apply technical and analytical skills to solve real-world business problems.
+SKILLS
+Languages Programming & Web Development: Python, SQL, PHP, JavaScript, HTML, CSS
+Data Analysis & Visualization: Pandas, NumPy, Matplotlib, Power BI
+Databases & Data Management: MySQL, SQLite, ETL, large dataset handling
+Reporting & Documentation: KPI dashboards, SOPs, flowcharts, job aids
+Machine Learning & AI: PyTorch, TensorFlow, Scikit-learn, YOLO, data preprocessing, model evaluation
+ERP & Supply Chain Systems: Basic familiarity with SAP and JDA workflows
+Other Tools: Git, GitHub, Jupyter Notebooks, MS Excel, Linux basics, troubleshooting & production support
+Soft Skills: Detail-oriented research, problem-solving, customer service, multitasking under pressure
+EDUCATION
+PROFESSIONAL EXPERIENCE
+Developed a real-time litter detection system using YOLO Nano with PyTorch and TensorFlow, trained on TACO and custom datasets.
+Led data annotation and preprocessing pipeline to ensure high-quality training data and robust model generalization.
+Applied augmentation techniques (rotation, scaling, lighting variations) to improve detection under diverse environmental conditions.
+Conducted hyperparameter tuning and evaluation, achieving mAP@50 of 82, precision 0.85, recall 0.71.
+Collaborated with team members to simulate resource-constrained robotic deployment, ensuring low-latency inference for practical applications.
+Documented workflows, trained team members on deployment, and provided insights for model integration into operational systems.
+Tech Used: Python, PyTorch, TensorFlow, OpenCV, YOLO Nano, CVAT
+PROJECTS
+AI-Powered Personalized Learning Platform (Python, TensorFlow, Flask)
+Developed a recommendation engine to personalize learning content using ML algorithms and collaborative filtering.
+Implemented adaptive learning features to adjust content difficulty based on user performance.
+Built a web interface for students to interact with learning modules and track progress.
+Applied data preprocessing, feature engineering, and model evaluation techniques to optimize learning predictions.
+Online Purchase Order Classification (Python, XGBoost, Pandas, Flask)
+Built a cost-sensitive classification model to detect high- and low-risk purchase orders from 30k+ real-world records.
+Conducted data cleaning, feature engineering, and preprocessing on structured order datasets.
+Evaluated models using confusion matrix, ROC-AUC, and applied threshold tuning for optimal fraud detection recall.
+Deployed a REST API to classify orders in real-time, supporting decision-making in operational workflows.
+Movie Recommendation Engine (Python, KNN, Deep Learning, Flask)
+Developed a movie recommendation system using KNN and deep learning models to predict user preferences.
+Processed large datasets to extract features and embeddings, improving recommendation accuracy.
+Built a Flask-based web app for users to query recommendations and view personalized movie suggestions.
+Experimented with different similarity metrics and model hyperparameters to maximize prediction relevance.
