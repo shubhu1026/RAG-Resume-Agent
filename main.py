@@ -1,9 +1,9 @@
-from resume_processing import extract_text_from_pdf, anonymize_resume
+from core.resume_processing import extract_text_from_pdf, anonymize_resume
 from metadata_extraction import extract_metadata, convert_metadata_for_chroma
 from vectorstore import create_vectorstore
 from rag_chain import build_rag_chain
 from utils import pretty_print
-from graph import build_workflow
+from graph.graph import build_workflow
 from langchain_community.tools.tavily_search import TavilySearchResults
 
 def main():

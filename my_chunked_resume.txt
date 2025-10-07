@@ -1,168 +1,377 @@
 ============================================================
 📄 Document 1
-🔖 Metadata: {'section': 'summary', 'type': 'section'}
+🔖 Metadata: {'skills': 'Python, TensorFlow, PyTorch, OpenCV, NumPy, Pandas, Java, C++, Deep Learning, Transfer Learning, Natural Language Processing, Computer Vision, Optimization Techniques, Llama, BERT, GPT, Data Preprocessing, Feature Engineering, Model Training & Evaluation, Web Scraping, API Integration, Software Optimization, Problem-solving, Adaptability, Team Collaboration, Attention to Detail, Effective Communication, Time Management, Proactive Learning', 'projects': 'RAG based Intelligent System, Leafio – Plant Leaf Disease Detection, TeSteps – Social Networking Project & AI-Powered Assessment System', 'tech_stack': 'YOLO Nano, Android Studio, MVVM, Firebase, Flask, CNN, Keras API, TensorFlow', 'tags': 'AI Engineering, Machine Learning, Deep Learning, Mobile Application Development, Computer Vision, Natural Language Processing', 'experience': 'Capstone Project, Kevares, Mobile Application Developer Intern, SkillVertex', 'education': 'Graduate Certificate in Artificial Intelligence with Machine Learning at Humber College, Toronto, ON (Sept 2024 – April 2025), Graduate Certificate in Mobile Application Development at Centennial College, Scarborough, ON (Sept 2023 – April 2024), Bachelor of Technology - Computer Science & Engineering at Maharashtra Institute of Technology, Pune, India (July 2018 – July 2022)', 'section_headers': 'Skills, Professional Experience, Education, Personal Projects, Publications', 'section': 'full', 'type': 'full_resume'}
 📝 Content:
-Motivated and detail-oriented developer with hands-on experience in Python, SQL, PHP, and JavaScript, and a strong foundation in data analysis, reporting, and full-stack development. Skilled at processing and transforming large datasets, building dashboards, and developing web-based tools to drive operational efficiency. Over a year of retail experience at Shell, providing insight into supply chain workflows and customer interaction. Experienced in machine learning, computer vision, and automation, with proven ability to work collaboratively and deliver practical solutions. Eager to apply technical and analytical skills to solve real-world business problems.
+SHUBHAM PATEL 
+Scarborough, ON 
+EMAIL_REDACTED 
+PHONE_REDACTED 
+LinkedIn | GitHub | Portfolio 
+ 
+AI ENGINEER 
+Passionate Machine Learning Engineer with a strong foundation in Python, TensorFlow, and 
+PyTorch. Hands-on experience in developing AI models for computer vision, natural language 
+processing, and predictive analytics. Proven ability to collaborate with cross-functional teams to 
+implement machine learning solutions that align with business objectives. Adept at 
+programming, debugging, and optimizing deep learning algorithms. 
+ 
+Skills 
+• 
+Programming Languages: Python, TensorFlow, PyTorch, OpenCV, NumPy, Pandas, 
+Java, C++ 
+• 
+Machine Learning & AI: Deep Learning, Transfer Learning, Natural Language 
+Processing, Computer Vision, Optimization Techniques 
+• 
+LLMs and AI Models: Llama, BERT, GPT 
+• 
+Data Science & Analytics: Data Preprocessing, Feature Engineering, Model Training & 
+Evaluation 
+• 
+Software Development: Web Scraping, API Integration, Software Optimization 
+• 
+Tools & Platforms: Google Colab, Jupyter Notebook, Git, Docker 
+• 
+Soft Skills: Problem-solving, Adaptability, Team Collaboration, Attention to Detail, 
+Effective Communication, Time Management, Proactive Learning. 
+ 
+ 
+Professional Experience 
+Capstone Project, Kevares 
+ 
+ 
+ 
+ 
+ 
+ 
+(Ongoing) 
+• 
+Developing a YOLO Nano-based model for real-time trash detection, leveraging transfer 
+learning on the TrashNet dataset and a custom robot-collected dataset. 
+• 
+Leading the data annotation process to create high-quality labeled training data, 
+improving model performance and generalization. 
+• 
+Applying data augmentation techniques to enhance dataset diversity and improve 
+detection accuracy. 
+• 
+Performing hyperparameter optimization to fine-tune model performance for real-world 
+deployment. 
+• 
+Implementing and evaluating multiple training strategies to achieve high detection 
+accuracy in diverse environmental conditions. 
+Mobile Application Developer Intern, SkillVertex (Online) 
+ Feb 2022 – April 2022 
+• 
+Developed a secure note-taking app using Android Studio and MVVM architecture with 
+optimized search and filtering functionalities. 
+• 
+Built a real-time chat application using Firebase with secure communication systems for 
+private and group chats, improving user experience and data integrity. 
+ 
+Education 
+Humber College, Toronto, ON 
+ 
+ Sept 2024 – April 2025 
+Graduate Certificate in Artificial Intelligence with Machine Learning 
+ 
+Centennial College, Scarborough, ON 
+ Sept 2023 – April 2024 
+Graduate Certificate in Mobile Application Development 
+ 
+Maharashtra Institute of Technology, Pune, India 
+ 
+July 2018 – July 2022 
+Bachelor of Technology - Computer Science & Engineering 
+ 
+Personal Projects 
+RAG based Intelligent System 
+• 
+Developed a Retrieval-Augmented Generation (RAG) pipeline to enhance document-
+based Q&A with LLMs and private knowledge sources. 
+• 
+Used document chunking and vector embeddings (FAISS) for efficient storage and 
+retrieval. 
+• 
+Applied k-nearest neighbors (KNN) search to fetch relevant context and improve 
+response accuracy. 
+• 
+Optimized query retrieval with multi-query rewriting, semantic routing, and HYDE for 
+better document alignment. 
+• 
+Integrated sub-question decomposition and hierarchical indexing to refine retrieval and 
+improve context relevance. 
+• 
+Implemented a Flask-based API for real-time interactions. 
+Leafio – Plant Leaf Disease Detection 
+• 
+Led the development of an Android app using CNNs for plant disease detection, 
+integrated with a Flask API for real-time predictions, achieving over 85% accuracy. The 
+model, created by our team, was hosted on a server and accessed via API calls. 
+• 
+Designed and trained a custom CNN model using a dataset of diseased and healthy 
+plant leaves, implementing data augmentation techniques to improve model robustness. 
+• 
+Developed a Flask API for model deployment, hosting the trained model on a server and 
+enabling seamless communication with the mobile app via API calls. 
+• 
+Published a research paper on the comparative study of CNN-based disease detection, 
+contributing to AI-driven advancements in precision agriculture. 
+TeSteps – Social Networking Project & AI-Powered Assessment System 
+• 
+Built a social networking platform with user authentication, post-sharing, and interactive 
+features. 
+• 
+• Integrated an NLP-powered test evaluation system that automatically graded student 
+responses with 80% accuracy. 
+• 
+• Utilized an existing NLP model for similarity comparison to match student answers 
+against an ideal response, assigning scores based on semantic closeness. 
+ 
+Publications 
+A Comparative Study on Convolutional Neural Network Based Plant Leaf Disease 
+Detection 
+Shubham Patel, Sujay Patil, Sourabh Zadbuke, Som Kamthe 
+MIT School of Engineering, Maharashtra, India 
+This paper compares Convolutional Neural Network-based models (Xception, VGG16, 
+MobileNet) for recognizing plant leaf diseases, utilizing Transfer Learning and Fine-Tuning with 
+the Keras API and TensorFlow. The performance analysis was conducted using the DrPlantify 
+Dataset, with results from training, validation, and testing. 
+Keywords: Deep Learning, Neural Network, Convolutional Neural Network, Transfer Learning, 
+Plant Leaf Disease Recognition
 ============================================================
 
 ============================================================
 📄 Document 2
 🔖 Metadata: {'section': 'skills', 'type': 'section'}
 📝 Content:
-Languages Programming & Web Development: Python, SQL, PHP, JavaScript, HTML, CSS
-Data Analysis & Visualization: Pandas, NumPy, Matplotlib, Power BI
-Databases & Data Management: MySQL, SQLite, ETL, large dataset handling
-Reporting & Documentation: KPI dashboards, SOPs, flowcharts, job aids
-Machine Learning & AI: PyTorch, TensorFlow, Scikit-learn, YOLO, data preprocessing, model evaluation
-ERP & Supply Chain Systems: Basic familiarity with SAP and JDA workflows
-Other Tools: Git, GitHub, Jupyter Notebooks, MS Excel, Linux basics, troubleshooting & production support
-Soft Skills: Detail-oriented research, problem-solving, customer service, multitasking under pressure
+• 
+Programming Languages: Python, TensorFlow, PyTorch, OpenCV, NumPy, Pandas, 
+Java, C++ 
+• 
+Machine Learning & AI: Deep Learning, Transfer Learning, Natural Language 
+Processing, Computer Vision, Optimization Techniques 
+• 
+LLMs and AI Models: Llama, BERT, GPT 
+• 
+Data Science & Analytics: Data Preprocessing, Feature Engineering, Model Training & 
+Evaluation 
+• 
+Software Development: Web Scraping, API Integration, Software Optimization 
+• 
+Tools & Platforms: Google Colab, Jupyter Notebook, Git, Docker 
+• 
+Soft Skills: Problem-solving, Adaptability, Team Collaboration, Attention to Detail, 
+Effective Communication, Time Management, Proactive Learning.
 ============================================================
 
 ============================================================
 📄 Document 3
 🔖 Metadata: {'section': 'professional experience', 'type': 'section'}
 📝 Content:
-Developed a real-time litter detection system using YOLO Nano with PyTorch and TensorFlow, trained on TACO and custom datasets.
-Led data annotation and preprocessing pipeline to ensure high-quality training data and robust model generalization.
-Applied augmentation techniques (rotation, scaling, lighting variations) to improve detection under diverse environmental conditions.
-Conducted hyperparameter tuning and evaluation, achieving mAP@50 of 82, precision 0.85, recall 0.71.
-Collaborated with team members to simulate resource-constrained robotic deployment, ensuring low-latency inference for practical applications.
-Documented workflows, trained team members on deployment, and provided insights for model integration into operational systems.
-Tech Used: Python, PyTorch, TensorFlow, OpenCV, YOLO Nano, CVAT
+Capstone Project, Kevares 
+ 
+ 
+ 
+ 
+ 
+ 
+(Ongoing) 
+• 
+Developing a YOLO Nano-based model for real-time trash detection, leveraging transfer 
+learning on the TrashNet dataset and a custom robot-collected dataset. 
+• 
+Leading the data annotation process to create high-quality labeled training data, 
+improving model performance and generalization. 
+• 
+Applying data augmentation techniques to enhance dataset diversity and improve 
+detection accuracy. 
+• 
+Performing hyperparameter optimization to fine-tune model performance for real-world 
+deployment. 
+• 
+Implementing and evaluating multiple training strategies to achieve high detection 
+accuracy in diverse environmental conditions. 
+Mobile Application Developer Intern, SkillVertex (Online) 
+ Feb 2022 – April 2022 
+• 
+Developed a secure note-taking app using Android Studio and MVVM architecture with 
+optimized search and filtering functionalities. 
+• 
+Built a real-time chat application using Firebase with secure communication systems for 
+private and group chats, improving user experience and data integrity.
 ============================================================
 
 ============================================================
 📄 Document 4
-🔖 Metadata: {'section': 'projects', 'type': 'section'}
+🔖 Metadata: {'section': 'professional experience', 'type': 'item'}
 📝 Content:
-AI-Powered Personalized Learning Platform (Python, TensorFlow, Flask)
-Developed a recommendation engine to personalize learning content using ML algorithms and collaborative filtering.
-Implemented adaptive learning features to adjust content difficulty based on user performance.
-Built a web interface for students to interact with learning modules and track progress.
-Applied data preprocessing, feature engineering, and model evaluation techniques to optimize learning predictions.
-Online Purchase Order Classification (Python, XGBoost, Pandas, Flask)
-Built a cost-sensitive classification model to detect high- and low-risk purchase orders from 30k+ real-world records.
-Conducted data cleaning, feature engineering, and preprocessing on structured order datasets.
-Evaluated models using confusion matrix, ROC-AUC, and applied threshold tuning for optimal fraud detection recall.
-Deployed a REST API to classify orders in real-time, supporting decision-making in operational workflows.
-Movie Recommendation Engine (Python, KNN, Deep Learning, Flask)
-Developed a movie recommendation system using KNN and deep learning models to predict user preferences.
-Processed large datasets to extract features and embeddings, improving recommendation accuracy.
-Built a Flask-based web app for users to query recommendations and view personalized movie suggestions.
-Experimented with different similarity metrics and model hyperparameters to maximize prediction relevance.
+Capstone Project,
 ============================================================
 
 ============================================================
 📄 Document 5
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
+🔖 Metadata: {'section': 'professional experience', 'type': 'item'}
 📝 Content:
-AI-Powered Personalized Learning Platform (Python
-,
+Kevares 
+ 
+ 
+ 
+ 
+ 
+ 
+(Ongoing) 
+• 
+Developing a YOLO Nano-based model for real-time trash detection, leveraging transfer 
+learning on the TrashNet dataset and a custom robot-collected dataset. 
+• 
+Leading the data annotation process to create high-quality labeled training data, 
+improving model performance and generalization. 
+• 
+Applying data augmentation techniques to enhance dataset diversity and improve 
+detection accuracy. 
+• 
+Performing hyperparameter optimization to fine-tune model performance for real-world 
+deployment. 
+• 
+Implementing and evaluating multiple training strategies to achieve high detection 
+accuracy in diverse environmental conditions.
 ============================================================
 
 ============================================================
 📄 Document 6
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
+🔖 Metadata: {'section': 'professional experience', 'type': 'item'}
 📝 Content:
-TensorFlow
-,
+Mobile Application Developer Intern,
 ============================================================
 
 ============================================================
 📄 Document 7
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
+🔖 Metadata: {'section': 'professional experience', 'type': 'item'}
 📝 Content:
-Flask)
-Developed a recommendation engine to personalize learning content using ML algorithms and collaborative filtering.
-Implemented adaptive learning features to adjust content difficulty based on user performance.
-Built a web interface for students to interact with learning modules and track progress.
-Applied data preprocessing, feature engineering, and model evaluation techniques to optimize learning predictions.
+SkillVertex (Online) 
+ Feb 2022 – April 2022 
+• 
+Developed a secure note-taking app using Android Studio and MVVM architecture with 
+optimized search and filtering functionalities. 
+• 
+Built a real-time chat application using Firebase with secure communication systems for 
+private and group chats, improving user experience and data integrity.
 ============================================================
 
 ============================================================
 📄 Document 8
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
+🔖 Metadata: {'section': 'education', 'type': 'section'}
 📝 Content:
-Online Purchase Order Classification (Python
-,
+Humber College, Toronto, ON 
+ 
+ Sept 2024 – April 2025 
+Graduate Certificate in Artificial Intelligence with Machine Learning 
+ 
+Centennial College, Scarborough, ON 
+ Sept 2023 – April 2024 
+Graduate Certificate in Mobile Application Development 
+ 
+Maharashtra Institute of Technology, Pune, India 
+ 
+July 2018 – July 2022 
+Bachelor of Technology - Computer Science & Engineering
 ============================================================
 
 ============================================================
 📄 Document 9
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
+🔖 Metadata: {'section': 'education', 'type': 'item'}
 📝 Content:
-XGBoost
-,
+Toronto, ON 
+ 
+ Sept 2024 – April 2025 
+Graduate Certificate in Artificial Intelligence with Machine Learning 
+ 
+Centennial College,
 ============================================================
 
 ============================================================
 📄 Document 10
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
+🔖 Metadata: {'section': 'education', 'type': 'item'}
 📝 Content:
-Pandas
-,
+Scarborough, ON 
+ Sept 2023 – April 2024 
+Graduate Certificate in Mobile Application Development 
+ 
+Maharashtra Institute of Technology,
 ============================================================
 
 ============================================================
 📄 Document 11
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
+🔖 Metadata: {'section': 'education', 'type': 'item'}
 📝 Content:
-Flask)
-Built a cost-sensitive classification model to detect high- and low-risk purchase orders from 30k+ real-world records.
-Conducted data cleaning, feature engineering, and preprocessing on structured order datasets.
-Evaluated models using confusion matrix, ROC-AUC, and applied threshold tuning for optimal fraud detection recall.
-Deployed a REST API to classify orders in real-time, supporting decision-making in operational workflows.
+Pune, India 
+ 
+July 2018 – July 2022 
+Bachelor of Technology - Computer Science & Engineering
 ============================================================
 
 ============================================================
 📄 Document 12
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
+🔖 Metadata: {'section': 'personal projects', 'type': 'section'}
 📝 Content:
-Movie Recommendation Engine (Python
-,
+RAG based Intelligent System 
+• 
+Developed a Retrieval-Augmented Generation (RAG) pipeline to enhance document-
+based Q&A with LLMs and private knowledge sources. 
+• 
+Used document chunking and vector embeddings (FAISS) for efficient storage and 
+retrieval. 
+• 
+Applied k-nearest neighbors (KNN) search to fetch relevant context and improve 
+response accuracy. 
+• 
+Optimized query retrieval with multi-query rewriting, semantic routing, and HYDE for 
+better document alignment. 
+• 
+Integrated sub-question decomposition and hierarchical indexing to refine retrieval and 
+improve context relevance. 
+• 
+Implemented a Flask-based API for real-time interactions. 
+Leafio – Plant Leaf Disease Detection 
+• 
+Led the development of an Android app using CNNs for plant disease detection, 
+integrated with a Flask API for real-time predictions, achieving over 85% accuracy. The 
+model, created by our team, was hosted on a server and accessed via API calls. 
+• 
+Designed and trained a custom CNN model using a dataset of diseased and healthy 
+plant leaves, implementing data augmentation techniques to improve model robustness. 
+• 
+Developed a Flask API for model deployment, hosting the trained model on a server and 
+enabling seamless communication with the mobile app via API calls. 
+• 
+Published a research paper on the comparative study of CNN-based disease detection, 
+contributing to AI-driven advancements in precision agriculture. 
+TeSteps – Social Networking Project & AI-Powered Assessment System 
+• 
+Built a social networking platform with user authentication, post-sharing, and interactive 
+features. 
+• 
+• Integrated an NLP-powered test evaluation system that automatically graded student 
+responses with 80% accuracy. 
+• 
+• Utilized an existing NLP model for similarity comparison to match student answers 
+against an ideal response, assigning scores based on semantic closeness.
 ============================================================
 
 ============================================================
 📄 Document 13
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
+🔖 Metadata: {'section': 'publications', 'type': 'section'}
 📝 Content:
-KNN
-,
-============================================================
-
-============================================================
-📄 Document 14
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
-📝 Content:
-Deep Learning
-,
-============================================================
-
-============================================================
-📄 Document 15
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
-📝 Content:
-Flask)
-Developed a movie recommendation system using
-============================================================
-
-============================================================
-📄 Document 16
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
-📝 Content:
-KNN
-and
-============================================================
-
-============================================================
-📄 Document 17
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
-📝 Content:
-deep learning
-models to predict user preferences.
-Processed large datasets to extract features and embeddings, improving recommendation accuracy.
-Built a Flask-based web app for users to query recommendations and view personalized movie suggestions.
-Experimented with different similarity metrics and model hyperparameters to maximize prediction relevance.
+A Comparative Study on Convolutional Neural Network Based Plant Leaf Disease 
+Detection 
+Shubham Patel, Sujay Patil, Sourabh Zadbuke, Som Kamthe 
+MIT School of Engineering, Maharashtra, India 
+This paper compares Convolutional Neural Network-based models (Xception, VGG16, 
+MobileNet) for recognizing plant leaf diseases, utilizing Transfer Learning and Fine-Tuning with 
+the Keras API and TensorFlow. The performance analysis was conducted using the DrPlantify 
+Dataset, with results from training, validation, and testing. 
+Keywords: Deep Learning, Neural Network, Convolutional Neural Network, Transfer Learning, 
+Plant Leaf Disease Recognition
 ============================================================
 
