@@ -6,7 +6,7 @@ def chat_fn(message, history, app_state, metadata_state, jd_state, max_recent=4)
     Handle chat messages using static context from resume + JD (app_state + metadata_state),
     and only pass recent user messages to the model to reduce token usage.
     """
-    if not app_state:
+    if not app_state or "workflow" not in app_state:
         return [{"role": "assistant", "content": "⚠️ Please upload a resume first."}]
 
     # Keep only the last N messages for context
@@ -16,12 +16,14 @@ def chat_fn(message, history, app_state, metadata_state, jd_state, max_recent=4)
     inputs = {
         "question": message,
         "metadata_summary": str(metadata_state) if metadata_state else "",
-        "job_description": jd_state or "",
+        "job_description": jd_state or app_state.get("job_description", ""),
         "recent_conversation": recent_history
     }
 
     final_answer = "⚠️ No response generated."
-    for output in app_state.stream(inputs):
+    workflow = app_state["workflow"]  
+
+    for output in workflow.stream(inputs):
         for _, value in output.items():
             if "generation" in value:
                 gen = value["generation"]

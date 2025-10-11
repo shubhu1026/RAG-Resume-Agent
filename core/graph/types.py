@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 class GraphState(TypedDict):
     question: str
     generation: str
+    resume_text: str
     documents: List[str]
     job_description: str 
 

@@ -3,7 +3,7 @@ from services.chat_service import chat_fn
 from services.resume_service import process_job_desc, process_resume_file
 from services.resume_tailor_service import auto_resume_fn
 from services.skills_service import skills_fit_fn
-from core.suggestions_graph import build_suggestions_flow
+from skills_graph.skills_workflows import build_skills_flow
 
 from app.config import LANGCHAIN_PROJECT
 
@@ -12,11 +12,19 @@ from langsmith import Client
 client = Client()
 print(f"✅ LangSmith connected. Project: {LANGCHAIN_PROJECT}")
 
+# def on_resume_upload(resume_text, jd_text):
+#     suggestions_workflow = build_suggestions_flow()
+#     state = {"resume_text": resume_text, "job_description": jd_text}
+#     result = suggestions_workflow.invoke(state)
+#     return result["skills_comparison"], result["suggestions"]
+
 def on_resume_upload(resume_text, jd_text):
-    suggestions_workflow = build_suggestions_flow()
+    suggestions_workflow = build_skills_flow(generate_suggestions=False)
     state = {"resume_text": resume_text, "job_description": jd_text}
     result = suggestions_workflow.invoke(state)
-    return result["skills_comparison"], result["suggestions"]
+    # 'suggestions' key may not exist if generate_suggestions=False
+    return result["skills_comparison"], result.get("suggestions", {})
+
 
 # --- Theme ---
 custom_theme = gr.themes.Base(
@@ -150,14 +158,55 @@ with gr.Blocks(theme=custom_theme, css=css, title="Adaptive RAG Resume Agent") a
 
 
         # --- Skills & Job Fit ---
+        # with gr.Tab("📊 Skills & Job Fit"):
+        #     fit_status = gr.Textbox(label="Status", interactive=False)
+        #     fit_output = gr.JSON(label="Fit Analysis")
+        #     gr.Button("Analyze Skills & Fit", variant="primary").click(
+        #         skills_fit_fn,
+        #         inputs=[app_state, metadata_state, jd_state],
+        #         outputs=[fit_status, fit_output]
+        #     )
+
+        # --- Skills & Job Fit Tab ---
         with gr.Tab("📊 Skills & Job Fit"):
             fit_status = gr.Textbox(label="Status", interactive=False)
-            fit_output = gr.JSON(label="Fit Analysis")
-            gr.Button("Analyze Skills & Fit", variant="primary").click(
-                skills_fit_fn,
+            skill_chips = gr.HTML(label="Skill Comparison")
+            
+            def render_skill_chips(state, metadata_state, jd_state):
+                """
+                Build colored HTML chips for matched, missing, extra skills
+                """
+                # Call your skills_fit_fn to get JSON output
+                skills_comparison = skills_fit_fn(state, metadata_state, jd_state)
+                
+                matched = skills_comparison["matched_skills"]
+                missing = skills_comparison["missing_skills"]
+                extra = skills_comparison["extra_skills"]
+
+                # Build HTML for chips
+                html = "<div style='display:flex; flex-wrap:wrap; gap:0.5rem;'>"
+                for skill in matched:
+                    html += f"<span style='background:#4ade80; color:#fff; padding:0.3rem 0.6rem; border-radius:12px;' title='Matched Skill'>{skill}</span>"
+                for skill in missing:
+                    html += f"<span style='background:#facc15; color:#000; padding:0.3rem 0.6rem; border-radius:12px;' title='Missing Skill'>{skill}</span>"
+                for skill in extra:
+                    html += f"<span style='background:#f87171; color:#fff; padding:0.3rem 0.6rem; border-radius:12px;' title='Extra Skill'>{skill}</span>"
+                html += "</div>"
+
+                return "Skills comparison generated.", html
+
+            analyze_btn = gr.Button("Analyze Skills & Fit", variant="primary")
+            analyze_btn.click(
+                render_skill_chips,
                 inputs=[app_state, metadata_state, jd_state],
-                outputs=[fit_status, fit_output]
+                outputs=[fit_status, skill_chips]
             )
+
+            # Optional: Button to generate suggestions later
+            gen_sugg_btn = gr.Button("Generate Suggestions", variant="secondary")
+            gen_sugg_output = gr.JSON(label="Suggestions Output")
+            # gen_sugg_btn.click(fn=generate_suggestions_fn, inputs=[...], outputs=[gen_sugg_output])
+
 
         # --- Auto-Tailored Resume ---
         with gr.Tab("📝 Auto-Tailored Resume"):

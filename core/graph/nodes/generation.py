@@ -1,45 +1,58 @@
-# core/rag_chain.py (updated)
-from core.prompts import rag_runnable, compressor_runnable
-from langchain.retrievers import ContextualCompressionRetriever
-from langchain.retrievers.document_compressors import LLMChainExtractor
+from core.prompts import rag_runnable, llm 
 
-def generate(state, vector_db, rag_chain=None):
+def generate(state, rag_chain=None):
     """
-    Generate an answer using RAG with optional compressed retriever.
+    Generate a professional, accurate answer using RAG.
     """
-    query = state["question"]
-    jd = getattr(state.get("job_description", ""), "content", state.get("job_description", ""))
-    jd = jd.strip() if jd else ""
+    query = state.get("question", "").strip()
+    jd = state.get("job_description", "")
+    jd_text = getattr(jd, "content", jd).strip() if jd else ""
 
-    # Compressed retriever setup
-    try:
-        base_retriever = vector_db.as_retriever(search_kwargs={"k": 6})
-        compressed_retriever = ContextualCompressionRetriever(
-            base_retriever=base_retriever,
-            compressor=LLMChainExtractor(llm_chain=compressor_runnable)
-        )
-    except Exception:
-        compressed_retriever = base_retriever
+    if not query:
+        return {"generation": "⚠️ No query provided.", "documents": []}
 
-    # Fetch relevant documents
-    context_docs = compressed_retriever.invoke(query) if compressed_retriever else vector_db.similarity_search(query, k=3)
+    # --- Use documents from previous retrieval if available ---
+    context_docs = state.get("documents", [])
+    if not context_docs:
+        return {"generation": "⚠️ No context documents available.", "documents": []}
+
     context_text = "\n\n".join([d.page_content for d in context_docs])
 
-    # Prepare input for RAG runnable
-    llm_input = f"Job Description:\n{jd}\n\nResume Info:\n{context_text}" if jd else f"Resume Info:\n{context_text}"
+    prompt_inputs = {
+        "context": context_text,
+        "job_description": jd_text,
+        "question": query
+    }
 
-    # Use RunnableSequence instead of direct LLM call
-    response = rag_runnable.invoke({"context": context_text, "question": query})
+    try:
+        response = rag_runnable.invoke(prompt_inputs)
+        final_answer = getattr(response, "content", str(response)).strip()
+    except Exception as e:
+        print(f"RAG generation failed: {e}")
+        final_answer = "⚠️ Unable to generate a response at this time."
 
-    return {"question": query, "generation": response, "documents": context_docs}
-
+    return {
+        "question": query,
+        "generation": final_answer,
+        "documents": context_docs
+    }
 
 def llm_fallback(state):
     """
-    Simple fallback for small talk or uncategorized queries.
+    Fallback LLM response if RAG fails or no context.
     """
-    question = state["question"]
-    # Can create a mini RunnableSequence if you want, or just call the RAG prompt
-    fallback_prompt = {"context": "", "question": f"Answer the question/ greeting/ small talk concisely: {question}"}
+    question = state.get("question", "")
+    job_description = state.get("job_description", "")
+
+    fallback_prompt = {
+        "context": "",
+        "job_description": job_description or "",
+        "question": (
+            f"The user said: '{question}'. "
+            "If this is a greeting or small talk, respond politely and professionally in 1–2 sentences. "
+            "If it’s a general career or job-related question, provide a short, insightful response."
+        )
+    }
+
     generation = rag_runnable.invoke(fallback_prompt)
     return {"question": question, "generation": generation}

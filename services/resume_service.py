@@ -9,30 +9,39 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 from app.config import MODEL_NAME, TEMPERATURE
 from langchain_openai import ChatOpenAI
 
-def process_resume_file(file_obj, job_description):
+def process_resume_file(file_obj, job_description, app_state=None):
     if file_obj is None:
         return "⚠️ Please upload a resume file.", None, None, ""
 
     llm = ChatOpenAI(model_name=MODEL_NAME, temperature=TEMPERATURE)
 
-    # 1. Extract and anonymize resume
+    # Extract and anonymize resume
     resume_text = extract_text_from_file(file_obj)
     safe_text = anonymize_resume(resume_text)
 
-    # 2. Extract metadata
+    # Extract metadata
     metadata = extract_metadata(safe_text)
     metadata_dict = convert_metadata_for_chroma(metadata)
 
-    # 3. Build a *fresh* vector DB + workflow
+    # Build workflow
     vector_db = create_vectorstore(safe_text, metadata_dict)
     web_search_tool = TavilySearchResults()
-    app = build_workflow(vector_db, web_search_tool)
+    workflow = build_workflow(vector_db, web_search_tool)
 
-    # 4. Summarize JD (if present)
+    # Summarize JD if present
     jd_summary = summarize_job_description(job_description, llm) if job_description else ""
 
-    # 🚨 Return fresh state objects so old ones don’t persist
-    return "✅ Resume processed!", app, metadata_dict, jd_summary
+    # Update app_state as a dictionary
+    if app_state is None or not isinstance(app_state, dict):
+        app_state = {}
+
+    app_state.update({
+        "workflow": workflow,          # preserve workflow for chat
+        "resume_text": safe_text,      # for skills comparison
+        "job_description": jd_summary  # optional summary
+    })
+
+    return "✅ Resume processed!", app_state, metadata_dict, jd_summary
 
 
 def process_job_desc(job_description, app_state, metadata_state):

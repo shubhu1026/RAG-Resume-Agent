@@ -1,7 +1,7 @@
 import gradio as gr
 from core.resume_processing import extract_text_from_file, anonymize_resume
 from metadata_extraction import extract_metadata, convert_metadata_for_chroma
-from suggestions_graph import build_suggestions_flow
+from skills_graph.skills_workflows import build_suggestions_flow
 from vectorstore import create_vectorstore
 from graph.graph import build_workflow
 from langchain_community.tools.tavily_search import TavilySearchResults

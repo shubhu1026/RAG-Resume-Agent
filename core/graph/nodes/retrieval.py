@@ -38,10 +38,10 @@ def expand_query(user_query: str, num_variations: int = 5):
 
     return [v for v in variations if v]
 
-
 def retrieve(state, vector_db):
     """
-    Retrieve documents from vector_db based on expanded query perspectives.
+    Retrieve documents from vector_db based on the user's base query
+    and expanded query perspectives.
     """
     question = state["question"]
 
@@ -52,20 +52,20 @@ def retrieve(state, vector_db):
 
     # Expand query using RunnableSequence
     expanded_queries = expand_query(question, num_variations=3)
+
+    # Include the original query as well
+    all_queries = [question] + expanded_queries
+
     retrieved_docs = []
 
     if base_retriever:
-        for q in expanded_queries:
-            retrieved_docs.extend(base_retriever.invoke(q))
+        for q in all_queries:
+            retrieved_docs.extend(base_retriever.get_relevant_documents(q))
     else:
-        for q in expanded_queries:
+        for q in all_queries:
             retrieved_docs.extend(vector_db.similarity_search(q, k=3))
 
     # Deduplicate documents
-    unique = {}
-    for d in retrieved_docs:
-        key = getattr(d, "page_content", str(d))[:800]
-        if key not in unique:
-            unique[key] = d
+    unique_docs = {d.page_content: d for d in retrieved_docs}.values()
 
-    return {"question": question, "documents": list(unique.values())}
+    return {"question": question, "documents": list(unique_docs)}
