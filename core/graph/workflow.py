@@ -14,8 +14,9 @@ def build_workflow(vector_db, web_search_tool):
         "retrieve", 
         lambda state: retrieve(state, vector_db)
     )
+    
     workflow.add_node(
-        "generate", 
+        "generate",
         lambda state: generate(state, vector_db)
     )
     workflow.add_node(

@@ -8,6 +8,7 @@ class GraphState(TypedDict):
     resume_text: str
     documents: List[str]
     job_description: str 
+    chat_history: List[dict]
 
 class GradeAnswer(BaseModel):
     binary_score: str = Field(description="yes/no if it answers the question")

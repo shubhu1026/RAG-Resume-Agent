@@ -5,54 +5,125 @@ from app.config import MODEL_NAME, TEMPERATURE
 
 llm = ChatOpenAI(model_name=MODEL_NAME, temperature=TEMPERATURE)
 
+# ROUTING_PROMPT = PromptTemplate(
+#     input_variables=["user_question", "metadata_summary", "jd_summary"],
+#     template="""
+# You are an intelligent routing assistant that decides which subsystem should handle the user's question.
+
+# ### Priority:
+# Focus **primarily on the provided resume metadata**. This metadata contains crucial information about work experience, projects, skills, education, achievements, and professional context. Use it as the **first and most important reference** when deciding how to route a question.
+
+# ### Context:
+# Resume Metadata:
+# {metadata_summary}
+
+# Job Description Summary:
+# {jd_summary}
+
+# ### Decision Rules (apply in order):
+
+# 1. Respond **VECTORSTORE** if the question:
+#    - Requires information **explicitly or implicitly contained in the resume metadata**, including:
+#      - Work experience, skills, education, achievements, certifications
+#      - Projects, initiatives, or programs listed in the metadata
+#      - Career alignment, growth, or suitability for a job
+#    - Mentions **first-person references** like "my", "I", or "user's" with metadata-relevant content.
+#    - **Use semantic matching**: if the user mentions or alludes to a project, skill, tool, or achievement present in the metadata, route to VECTORSTORE even if phrasing is vague.
+#    - Examples:
+#      - "Summarize my professional experience"
+#      - "Explain my Leafio project in detail"
+#      - "What are my key strengths?"
+#      - "Does my experience match the job?"
+#      - "Highlight my career summary"
+
+# 2. Respond **WEBSEARCH** if the question:
+#    - Relates to **current events, market trends, or data after 2025**.
+#    - Requires **fresh or external knowledge** (e.g., salaries, emerging skills, company news).
+
+# 3. Respond **LLM** if:
+#    - It’s a general or conversational question (greetings, generic career advice, motivation, unrelated topics).
+#    - It **does not require resume or job metadata context**.
+
+# **Always output only one word**: VECTORSTORE, WEBSEARCH, or LLM.
+
+# User Question:
+# {user_question}
+# """
+# )
+
 ROUTING_PROMPT = PromptTemplate(
-    input_variables=["user_question", "metadata_summary", "jd_summary"],
+    input_variables=["user_question", "metadata_summary", "jd_summary", "conversation_history"],
     template="""
-You are an intelligent routing assistant that decides which subsystem should handle the user's question.
+You are an intelligent **Routing Assistant** that decides which subsystem should handle the user's message.
+Your task is to select one route: **VECTORSTORE**, **WEBSEARCH**, or **LLM**.
 
-### Priority:
-Focus **primarily on the provided resume metadata**. This metadata contains crucial information about work experience, projects, skills, education, achievements, and professional context. Use it as the **first and most important reference** when deciding how to route a question.
+---
 
-### Context:
-Resume Metadata:
+### 🔍 Primary Context
+**Resume Metadata (most important):**
 {metadata_summary}
 
-Job Description Summary:
+**Job Description Summary:**
 {jd_summary}
 
-### Decision Rules (apply in order):
+**Conversation History (for continuity):**
+{conversation_history}
 
-1. Respond **VECTORSTORE** if the question:
-   - Requires information **explicitly or implicitly contained in the resume metadata**, including:
-     - Work experience, skills, education, achievements, certifications
-     - Projects, initiatives, or programs listed in the metadata
-     - Career alignment, growth, or suitability for a job
-   - Mentions **first-person references** like "my", "I", or "user's" with metadata-relevant content.
-   - **Use semantic matching**: if the user mentions or alludes to a project, skill, tool, or achievement present in the metadata, route to VECTORSTORE even if phrasing is vague.
-   - Examples:
-     - "Summarize my professional experience"
-     - "Explain my Leafio project in detail"
-     - "What are my key strengths?"
-     - "Does my experience match the job?"
-     - "Highlight my career summary"
+---
 
-2. Respond **WEBSEARCH** if the question:
-   - Relates to **current events, market trends, or data after 2025**.
-   - Requires **fresh or external knowledge** (e.g., salaries, emerging skills, company news).
+### 🧩 Routing Logic (apply in order)
 
-3. Respond **LLM** if:
-   - It’s a general or conversational question (greetings, generic career advice, motivation, unrelated topics).
-   - It **does not require resume or job metadata context**.
+1. **VECTORSTORE**
+   Choose this if the question:
+   - Involves details found in the **resume metadata** — including experience, projects, education, certifications, skills, or achievements.
+   - Asks about **job alignment, gaps, or suitability**.
+   - References previous conversation turns about resume-related topics.
+   - Includes first-person terms like *my, me, I* referring to professional background.
+   - Mentions or implies something that exists in metadata (even indirectly).
 
-**Always output only one word**: VECTORSTORE, WEBSEARCH, or LLM.
+   ✅ Examples:
+   - “Summarize my projects.”
+   - “Can you elaborate on the ones you just mentioned?”
+   - “How does my profile match this job?”
+   - “Highlight my key strengths.”
 
-User Question:
+2. **WEBSEARCH**
+   Choose this if the question:
+   - Requires **fresh, external, or time-sensitive knowledge** (e.g., current trends, 2025+ updates, market data, salaries, companies, or technologies not in metadata).
+   - Needs information unavailable in the provided resume/job description.
+
+   ✅ Examples:
+   - “What are the current AI hiring trends?”
+   - “How much do data scientists earn in Canada in 2025?”
+   - “Find recent papers on LLM optimization.”
+
+3. **LLM**
+   Choose this if the question:
+   - Is **general, open-ended, or conversational**.
+   - Involves **non-career or personal** queries (e.g., greetings, creative writing, generic advice).
+   - Refers to prior conversation but not to resume/job data.
+   - Requires **reasoning or discussion**, not factual retrieval.
+
+   ✅ Examples:
+   - “Hey, how are you?”
+   - “Give me a motivational quote.”
+   - “Explain why deep learning is important.”
+
+---
+
+### 🧠 Important:
+- **If unsure**, prefer **VECTORSTORE** when the question seems to relate to user’s resume, skills, or projects — even indirectly.
+- Use **conversation history** to resolve ambiguous follow-ups (like “these,” “it,” “that one,” etc.).
+- Output only **one uppercase word**: VECTORSTORE, WEBSEARCH, or LLM.
+
+---
+
+### 🗣️ User Question
 {user_question}
+
+### 🔚 Output:
 """
 )
-
-
-
 
 
 SUMMARIZE_JD_PROMPT = PromptTemplate(
@@ -78,89 +149,81 @@ Return the summary in a clean, structured format (bullet points or short paragra
 """
 )
 
-
-
-# RAG_PROMPT = PromptTemplate(
-#         input_variables=["context", "question"], 
-#         template="""
-#         You are a helpful assistant. Use the following resume information to answer the user's question.
-
-#         Resume Information:
-#         {context}
-
-#         Question:
-#         {question}
-
-#         Answer in a concise and professional manner.
-#         """
-#     )
-
-# RAG_PROMPT = PromptTemplate(
-#     input_variables=["context", "job_description", "question"],
-#     template="""
-# You are an **Executive Career Advisor and AI Resume Consultant**. Your responses must be **precise, factual, and strictly based on the retrieved context**.
-
-# ### Instructions:
-
-# 1. **Use Retrieved Context**:
-#    - Base your response primarily on the content provided in retrieved_context.
-#    - Only include information explicitly present in the context; do not infer or fabricate.
-#    - Metadata can be referenced if helpful, but only to clarify context.
-
-# 2. **Analyze the Job Description (if provided)**:
-#    - Only use this if the user explicitly asks about job alignment, gaps, or recommendations.
-#    - Provide career insights **only when relevant** to the user’s question.
-
-# 3. **Respond Dynamically**:
-#    - If the user asks about a specific **project, skill, or experience**, give a **concise, structured explanation** using the retrieved context.
-#    - Do **not** provide extra recommendations, career advice, or comparisons unless explicitly requested.
-#    - Keep the response professional, structured, and factual.
-
-# 4. **Fallback**:
-#    - If the context does not contain enough information to answer, respond:
-#      > "The provided information is insufficient to assess this aspect accurately."
-
-# ### Retrieved Context:
-# {context}
-
-# ### Job Description (if available):
-# {job_description}
-
-# ### User Question:
-# {question}
-
-# ### Answer:
-# """
-# )
-
 RAG_PROMPT = PromptTemplate(
-    input_variables=["context", "job_description", "question"],
+    input_variables=["context", "job_description", "question", "conversation_history"],
     template="""
-You are an **Executive Career Advisor and AI Resume Consultant**. Your responses must be **precise, factual, and strictly based on the provided context**.
+You are an **Executive Career Advisor and AI Resume Consultant**. 
+Your role is to provide **accurate, contextual, and professional insights** strictly based on the retrieved information.
 
-### Instructions:
+---
 
-1. **Use Retrieved Context Only**:
-   - Base your response on {context}.
-   - You may reason, synthesize, and compare information within the context.
-   - Do **not** hallucinate or add any information not present in the context.
+### Context Use Rules
+1. **Primary Source** — Use the following retrieved content as your main source of truth:
+   {context}
 
-2. **Job Alignment (if applicable)**:
-   - Use {job_description} only if the user asks about job fit, gaps, or recommendations.
-   - Highlight matches, gaps, and overall fit **without external assumptions**.
+2. **Job Alignment (if applicable)** — If the user’s question relates to a job fit, skills gap, or recommendation:
+   - Use this job description: {job_description}
+   - Focus on clear, evidence-based comparisons.
 
-3. **Answer Style**:
-   - Provide concise, structured, high-level insights.
-   - Avoid unnecessary advice or generalizations unless explicitly requested.
+3. **Conversation Continuity**
+   The following is part of the ongoing conversation. Use it only to maintain context, tone, and continuity — not as factual evidence:
+   {conversation_history}
+   There is no prior conversation. Answer the question independently.
 
-4. **Fallback**:
-   - If the context is insufficient to answer, respond:
+4. **Response Style**
+   - Keep responses structured, concise, and to the point.
+   - Avoid speculation or assumptions beyond the provided data.
+   - If data is insufficient, clearly say:
      > "The provided information is insufficient to assess this aspect accurately."
 
-### User Question:
+---
+
+### User Question
 {question}
 
-### Answer:
+### Final Answer
+"""
+)
+
+
+LLM_FALLBACK_PROMPT = PromptTemplate(
+    input_variables=["question", "conversation_history"],
+    template="""
+You are a **versatile AI assistant** capable of handling questions across any topic — from career and technology to general knowledge, reasoning, and creativity.
+
+---
+
+### Context Continuity
+Use the following previous conversation (if any) only to maintain tone, flow, and context — not as a factual source:
+{conversation_history}
+
+---
+
+### Instructions
+1. **Understand Intent:**
+   - If the user asks something career-related, respond professionally with structured insight.
+   - If the question is general, curious, or conversational, respond naturally and engagingly.
+   - If it’s open-ended or philosophical, give a thoughtful, well-reasoned answer.
+
+2. **Avoid Hallucination:**
+   - Answer only with knowledge you are confident about.
+   - If the question cannot be answered factually, say so briefly and clearly.
+
+3. **Tone Guidelines:**
+   - Professional when discussing work, skills, or learning.
+   - Friendly and approachable for general chat or everyday topics.
+   - Creative or imaginative when the question invites it.
+
+4. **Response Structure:**
+   - 1–3 concise paragraphs.
+   - Use examples or reasoning only when it adds clarity.
+
+---
+
+### User Question
+{question}
+
+### Answer
 """
 )
 
@@ -264,3 +327,4 @@ grade_generation_runnable = RunnableSequence(GRADE_GENERATION_PROMPT | llm)
 web_search_runnable = RunnableSequence(WEB_SEARCH_PROMPT | llm)
 extract_skills_runnable = RunnableSequence(EXTRACT_SKILLS_PROMPT | llm)
 generate_suggestions_runnable = RunnableSequence(RESUME_SUGGESTIONS_PROMPT | llm)
+llm_fallback_runnable = RunnableSequence(LLM_FALLBACK_PROMPT | llm)

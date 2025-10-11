@@ -1,40 +1,75 @@
+import time
 from langsmith.run_helpers import traceable
 
 @traceable(name="RAG-Chat-Interaction")
-def chat_fn(message, history, app_state, metadata_state, jd_state, max_recent=4):
-    """
-    Handle chat messages using static context from resume + JD (app_state + metadata_state),
-    and only pass recent user messages to the model to reduce token usage.
-    """
+def chat_fn(message, history, app_state, metadata_state, jd_state):
+    """Non-streaming fallback chat function."""
+    history = history or []
     if not app_state or "workflow" not in app_state:
         return [{"role": "assistant", "content": "⚠️ Please upload a resume first."}]
 
-    # Keep only the last N messages for context
-    recent_history = (history or [])[-max_recent*2:]  # history is list of dicts
-
-    # Prepare inputs for RAG workflow
     inputs = {
         "question": message,
         "metadata_summary": str(metadata_state) if metadata_state else "",
         "job_description": jd_state or app_state.get("job_description", ""),
-        "recent_conversation": recent_history
+        "documents": app_state.get("documents", []),
+        "chat_history": history[-8:],  # recent history
     }
 
+    workflow = app_state["workflow"]
     final_answer = "⚠️ No response generated."
-    workflow = app_state["workflow"]  
 
     for output in workflow.stream(inputs):
         for _, value in output.items():
             if "generation" in value:
                 gen = value["generation"]
-                # Extract text if it's an AIMessage from RunnableSequence
                 final_answer = getattr(gen, "content", str(gen))
 
-    # Initialize history if None
-    history = history or []
-
-    # Append user and assistant messages as dicts (Gradio-compatible)
     history.append({"role": "user", "content": message})
     history.append({"role": "assistant", "content": final_answer})
-
     return history
+
+
+def chat_stream(message, history, app_state, metadata_state, jd_state):
+    history = history or []
+
+    # Step 1: Append user message
+    user_msg = {"role": "user", "content": message}
+    history.append(user_msg)
+    app_state.setdefault("chat_history", []).append(user_msg)
+    yield history
+
+    # Step 2: Assistant placeholder
+    assistant_msg = {"role": "assistant", "content": "generating response..."}
+    history.append(assistant_msg)
+    yield history
+
+    # Step 3: Run workflow
+    workflow_state = {
+        "question": message,
+        "metadata_summary": str(metadata_state or ""),
+        "job_description": jd_state or app_state.get("job_description", ""),
+        "documents": app_state.get("documents", []),
+        "chat_history": app_state["chat_history"],
+        "app_state": app_state, 
+    }
+
+    final_text = ""
+    workflow = app_state.get("workflow")
+    if not workflow:
+        history[-1]["content"] = "⚠️ Workflow not initialized."
+        yield history
+        return
+
+    for output in workflow.stream(workflow_state):
+        for _, value in output.items():
+            if "generation" in value:
+                token = getattr(value["generation"], "content", str(value["generation"]))
+                final_text += token
+                history[-1]["content"] = final_text
+                yield history
+                time.sleep(0.02)
+
+    history[-1]["content"] = final_text
+    app_state["chat_history"].append({"role": "assistant", "content": final_text})
+    yield history

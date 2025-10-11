@@ -2,6 +2,15 @@
 from core.routing import should_use_vectorstore
 from core.prompts import routing_runnable
 
+def format_history_for_routing(history):
+    if not history:
+        return ""
+    formatted = ""
+    for msg in history:
+        role = "User" if msg["role"] == "user" else "Assistant"
+        formatted += f"{role}: {msg['content']}\n"
+    return formatted
+
 def route_question(state, vector_db):
     """
     Decide how to route a user's question: vectorstore, web search, or LLM fallback.
@@ -26,7 +35,8 @@ def route_question(state, vector_db):
     route_msg = routing_runnable.invoke({
         "user_question": question,
         "metadata_summary": state.get("metadata_summary", ""),
-        "jd_summary": state.get("job_description", "")
+        "jd_summary": state.get("job_description", ""),
+        "conversation_history": format_history_for_routing(state.get("chat_history", [])),
     })
 
     route = route_msg.content.strip().lower()
