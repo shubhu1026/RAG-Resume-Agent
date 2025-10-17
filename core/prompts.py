@@ -301,6 +301,23 @@ Job Description:
 """
 )
 
+RESUME_SUGGESTIONS_PROMPT = PromptTemplate(
+    input_variables=["resume_text", "jd_text", "skills_comparison"],
+    template="""
+You are a senior resume strategist.
+
+Using the following skills comparison:
+{skills_comparison}
+
+Provide:
+1. **Three high-impact, specific resume improvement suggestions** focused on clarity, quantifiable results, and alignment with the job description.
+2. **Two optimized bullet points** rewritten to show measurable outcomes and strong action verbs.
+
+Output **only JSON** following this schema:
+{format_instructions}
+"""
+)
+
 # ---- RunnableSequences ----
 summarize_jd_runnable = RunnableSequence(SUMMARIZE_JD_PROMPT | llm)
 routing_runnable = RunnableSequence(ROUTING_PROMPT | llm)
@@ -309,4 +326,5 @@ expand_query_runnable = RunnableSequence(EXPAND_QUERY_PROMPT | llm)
 grade_generation_runnable = RunnableSequence(GRADE_GENERATION_PROMPT | llm)
 web_search_runnable = RunnableSequence(WEB_SEARCH_PROMPT | llm)
 extract_skills_runnable = RunnableSequence(EXTRACT_SKILLS_PROMPT | llm)
+generate_suggestions_runnable = RunnableSequence(RESUME_SUGGESTIONS_PROMPT | llm)
 llm_fallback_runnable = RunnableSequence(LLM_FALLBACK_PROMPT | llm)
