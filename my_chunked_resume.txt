@@ -1,305 +1,167 @@
 ============================================================
 📄 Document 1
-🔖 Metadata: {'skills': 'Python, FastAPI, Flask, Git, REST APIs, Asynchronous Data Flows, GPT-4, Hugging Face Transformers, LangChain, Prompt Engineering, RAG, PyTorch, TensorFlow, Scikit-learn, XGBoost, Model Evaluation & Tuning, FAISS, Embeddings, Semantic Search, GCP (Dataproc, BigQuery, Cloud Run), Docker, Kubernetes, CI/CD, SQL, PySpark, Apache Spark, Document Chunking, Text Classification, NLP Pipelines, Secure Coding, Version Control, Agile Development, Jupyter, VSCode, GitHub, Linux', 'projects': 'RAG-Based Q&A System with LLM Integration, AI Resume Tailor – GenAI-Powered Agent for Document Customization, Traffic Congestion Prediction using Big Data (GCP, PySpark, ELK)', 'tech_stack': 'LangChain, FAISS, GPT-4, Docker, Google Cloud Platform (GCP), PySpark, ELK', 'tags': 'Machine Learning, Artificial Intelligence, NLP, Cloud Computing, Data Engineering, Software Development', 'experience': 'Machine Learning Engineer', 'education': 'Graduate Certificate in Artificial Intelligence with Machine Learning at Humber College, Toronto, ON (September 2024 – April 2025), Graduate Certificate in Mobile Application Development at Centennial College, Scarborough, ON (September 2023 – April 2024), Bachelor of Technology in Computer Science & Engineering at Maharashtra Institute of Technology ADT, Pune, India (July 2018 – July 2022)', 'section_headers': 'SUMMARY, SKILLS, EDUCATION, PROFESSIONAL EXPERIENCE, PROJECTS', 'section': 'full', 'type': 'full_resume'}
+🔖 Metadata: {'skills': 'Python, FastAPI, Flask, Git, REST APIs, Asynchronous Data Flows, GPT-4, Hugging Face Transformers, LangChain, Prompt Engineering, RAG, PyTorch, TensorFlow, Scikit-learn, XGBoost, Model Evaluation & Tuning, FAISS, Embeddings, Semantic Search, GCP (Dataproc, BigQuery, Cloud Run), Docker, Kubernetes, CI/CD, SQL, PySpark, Apache Spark, Document Chunking, Text Classification, NLP Pipelines, Secure Coding, Version Control, Agile Development, Jupyter, VSCode, GitHub, Linux', 'projects': 'RAG-Based Q&A System with LLM Integration, AI Resume Tailor – GenAI-Powered Agent for Document Customization, Traffic Congestion Prediction using Big Data (GCP, PySpark, ELK)', 'tech_stack': 'LangChain, FAISS, Python, GPT-4, docker, GCP, PySpark, REST API, ELK Stack', 'tags': 'Machine Learning, Natural Language Processing, Cloud Computing, Containerization, AI, Big Data', 'experience': 'PROFESSIONAL EXPERIENCE', 'education': 'EDUCATION', 'section_headers': 'SUMMARY, SKILLS, EDUCATION, PROFESSIONAL EXPERIENCE, PROJECTS', 'section': 'full', 'type': 'full_resume'}
 📝 Content:
-Shubham Patel 
-EMAIL_REDACTED | PHONE_REDACTED |Scarborough ON 
-LinkedIn | GitHub | Portfolio 
-SUMMARY 
-Machine Learning Engineer specializing in building AI agents, RAG applications, and fine-tuning large language models 
-(LLMs). Skilled in LangChain, Hugging Face Transformers, and vector databases for context-aware retrieval. Experienced 
-in containerized deployments with Docker and Kubernetes, developing secure, cloud-native AI applications on GCP. 
-Adept at NLP pipelines, knowledge graph integration, and RESTful API development. 
-SKILLS 
-• Programming & APIs: Python, FastAPI, Flask, Git, REST APIs, Asynchronous Data Flows 
-• GenAI & LLMs: GPT-4, Hugging Face Transformers, LangChain, Prompt Engineering, RAG 
-• ML Development: PyTorch, TensorFlow, Scikit-learn, XGBoost, Model Evaluation & Tuning 
-• Vector Search: FAISS, Embeddings, Semantic Search 
-• Cloud & Deployment: GCP (Dataproc, BigQuery, Cloud Run), Docker, Kubernetes, CI/CD 
-• Data Engineering & NLP: SQL, PySpark, Apache Spark, Document Chunking, Text Classification, NLP Pipelines 
-• Security & Best Practices: Secure Coding, Version Control, Agile Development 
-• Tools & Collaboration: Jupyter, VSCode, GitHub, Linux 
-EDUCATION 
-Humber College, Toronto, ON 
-September 2024 – April 2025 
-Graduate Certificate in Artificial Intelligence with Machine Learning 
- 
-• Gained hands-on experience in supervised/unsupervised learning, deep learning, and reinforcement learning. 
-• Built and optimized models using scikit-learn, TensorFlow, Keras, and PyTorch. 
-• Worked on real-world problems in NLP, computer vision, and predictive analytics. 
-• Designed scalable ML pipelines, including data preprocessing, feature engineering, and hyperparameter tuning. 
-• Explored big data and distributed ML using Apache Spark, Google Cloud Dataproc, and Spark MLlib. 
-• Learned ML deployment techniques with Flask APIs, Docker, and basic Kubernetes for containerized inference. 
-Centennial College, Scarborough, ON 
-September 2023 – April 2024 
-Graduate Certificate in Mobile Application Development 
- 
-• Built native and cross-platform apps using Kotlin, Swift, JavaScript, and Flutter, applying MVVM and clean architecture 
-principle. 
-• Completed capstone project (SwiftTrend) with full-stack features: product search, PayPal integration, admin CRM, and 
-deployment via Android Studio & Xcode. 
-Maharashtra Institute of Technology ADT, Pune, India 
-July 2018 – July 2022 
-Bachelor of Technology in Computer Science & Engineering 
- 
-• Gained strong foundation in C++, Python, OOP, DBMS, assembly, and basic machine learning using scikit-learn. 
-• Developed Leafio (major project): a CNN-based plant disease detection app and published a research paper comparing 
-VGG16, Xception, and MobileNet architectures. 
- 
-PROFESSIONAL EXPERIENCE 
-Machine Learning Engineer 
-January 2025 – April 2025 
-Kevares (Capstone project via Humber College AI Program) 
- 
-• Developed a real-time trash detection system using a YOLO Nano-based model, leveraging transfer learning. 
-• Led the data annotation process to create high-quality labeled training data, improving generalization and robustness 
-across varied conditions. 
-• Applied targeted data augmentation to enhance dataset diversity and improve detection under environmental noise. 
-• Tuned model performance through extensive hyperparameter optimization, achieving mAP@50: 82, mAP@50–95: 
-0.51, precision: 0.85, and recall: 0.71 on validation sets. 
-• Designed and tested multiple training strategies to maximize real-world performance, enabling reliable deployment in 
-resource-constrained robotic environments. 
-PROJECTS 
-RAG-Based Q&A System with LLM Integration 
-• Engineered a LangChain-powered Retrieval-Augmented Generation pipeline leveraging FAISS embeddings for domain-
-specific Q&A over private datasets. 
-• Implemented advanced retrieval enhancements including multi-query rewriting, semantic reranking, and sub-question 
-decomposition to improve accuracy and context relevance. 
-• Deployed as a Flask API, enabling seamless integration into cloud-native workflows and supporting real-time, context-
-aware responses. 
-AI Resume Tailor – GenAI-Powered Agent for Document Customization 
-• Developed an autonomous AI agent using GPT-4, LangChain, and python-docx to customize resumes dynamically 
-based on job descriptions. 
-• Integrated vector search to effectively match job postings with resume content and implemented JSON-based prompt 
-chaining to ensure structured, high-quality output. 
-• Containerized the application with Docker and deployed it on Google Cloud Platform (GCP), demonstrating scalable 
-GenAI deployment best practices. 
-Traffic Congestion Prediction using Big Data (GCP, PySpark, ELK) 
-• Designed a distributed PySpark pipeline processing 94.5M+ NYC DOT traffic records on GCP Dataproc for congestion 
-level classification. 
-• Trained and tuned a Random Forest model with engineered temporal features, achieving ~85% accuracy. 
-• Packaged the model as a REST API, integrated with ELK Stack for real-time monitoring and analytics in production-like 
-environments.
+Shubham Patel
+EMAIL_REDACTED | PHONE_REDACTED |Scarborough ON
+LinkedIn | GitHub | Portfolio
+SUMMARY
+Machine Learning Engineer specializing in building AI agents, RAG applications, and fine-tuning large language models (LLMs). Skilled in LangChain, Hugging Face Transformers, and vector databases for context-aware retrieval. Experienced in containerized deployments with Docker and Kubernetes, developing secure, cloud-native AI applications on GCP. Adept at NLP pipelines, knowledge graph integration, and RESTful API development.
+SKILLS
+Programming & APIs: Python, FastAPI, Flask, Git, REST APIs, Asynchronous Data Flows
+GenAI & LLMs: GPT-4, Hugging Face Transformers, LangChain, Prompt Engineering, RAG
+ML Development: PyTorch, TensorFlow, Scikit-learn, XGBoost, Model Evaluation & Tuning
+Vector Search: FAISS, Embeddings, Semantic Search
+Cloud & Deployment: GCP (Dataproc, BigQuery, Cloud Run), Docker, Kubernetes, CI/CD
+Data Engineering & NLP: SQL, PySpark, Apache Spark, Document Chunking, Text Classification, NLP Pipelines
+Security & Best Practices: Secure Coding, Version Control, Agile Development
+Tools & Collaboration: Jupyter, VSCode, GitHub, Linux
+EDUCATION
+Gained hands-on experience in supervised/unsupervised learning, deep learning, and reinforcement learning.
+Built and optimized models using scikit-learn, TensorFlow, Keras, and PyTorch.
+Worked on real-world problems in NLP, computer vision, and predictive analytics.
+Designed scalable ML pipelines, including data preprocessing, feature engineering, and hyperparameter tuning.
+Explored big data and distributed ML using Apache Spark, Google Cloud Dataproc, and Spark MLlib.
+Learned ML deployment techniques with Flask APIs, Docker, and basic Kubernetes for containerized inference.
+Built native and cross-platform apps using Kotlin, Swift, JavaScript, and Flutter, applying MVVM and clean architecture principle.
+Completed capstone project (SwiftTrend) with full-stack features: product search, PayPal integration, admin CRM, and deployment via Android Studio & Xcode. 
+Gained strong foundation in C++, Python, OOP, DBMS, assembly, and basic machine learning using scikit-learn.
+Developed Leafio (major project): a CNN-based plant disease detection app and published a research paper comparing VGG16, Xception, and MobileNet architectures. 
+PROFESSIONAL EXPERIENCE
+Developed a real-time trash detection system using a YOLO Nano-based model, leveraging transfer learning.
+Led the data annotation process to create high-quality labeled training data, improving generalization and robustness across varied conditions.
+Applied targeted data augmentation to enhance dataset diversity and improve detection under environmental noise.
+Tuned model performance through extensive hyperparameter optimization, achieving mAP@50: 82, mAP@50–95: 0.51, precision: 0.85, and recall: 0.71 on validation sets.
+Designed and tested multiple training strategies to maximize real-world performance, enabling reliable deployment in resource-constrained robotic environments.
+PROJECTS
+RAG-Based Q&A System with LLM Integration
+Engineered a LangChain-powered Retrieval-Augmented Generation pipeline leveraging FAISS embeddings for domain-specific Q&A over private datasets.
+Implemented advanced retrieval enhancements including multi-query rewriting, semantic reranking, and sub-question decomposition to improve accuracy and context relevance.
+Deployed as a Flask API, enabling seamless integration into cloud-native workflows and supporting real-time, context-aware responses.
+AI Resume Tailor – GenAI-Powered Agent for Document Customization
+Developed an autonomous AI agent using GPT-4, LangChain, and python-docx to customize resumes dynamically based on job descriptions.
+Integrated vector search to effectively match job postings with resume content and implemented JSON-based prompt chaining to ensure structured, high-quality output.
+Containerized the application with Docker and deployed it on Google Cloud Platform (GCP), demonstrating scalable GenAI deployment best practices.
+Traffic Congestion Prediction using Big Data (GCP, PySpark, ELK)
+Designed a distributed PySpark pipeline processing 94.5M+ NYC DOT traffic records on GCP Dataproc for congestion level classification.
+Trained and tuned a Random Forest model with engineered temporal features, achieving ~85% accuracy.
+Packaged the model as a REST API, integrated with ELK Stack for real-time monitoring and analytics in production-like environments.
 ============================================================
 
 ============================================================
 📄 Document 2
 🔖 Metadata: {'section': 'summary', 'type': 'section'}
 📝 Content:
-Machine Learning Engineer specializing in building AI agents, RAG applications, and fine-tuning large language models 
-(LLMs). Skilled in LangChain, Hugging Face Transformers, and vector databases for context-aware retrieval. Experienced 
-in containerized deployments with Docker and Kubernetes, developing secure, cloud-native AI applications on GCP. 
-Adept at NLP pipelines, knowledge graph integration, and RESTful API development.
+Machine Learning Engineer specializing in building AI agents, RAG applications, and fine-tuning large language models (LLMs). Skilled in LangChain, Hugging Face Transformers, and vector databases for context-aware retrieval. Experienced in containerized deployments with Docker and Kubernetes, developing secure, cloud-native AI applications on GCP. Adept at NLP pipelines, knowledge graph integration, and RESTful API development.
 ============================================================
 
 ============================================================
 📄 Document 3
 🔖 Metadata: {'section': 'skills', 'type': 'section'}
 📝 Content:
-• Programming & APIs: Python, FastAPI, Flask, Git, REST APIs, Asynchronous Data Flows 
-• GenAI & LLMs: GPT-4, Hugging Face Transformers, LangChain, Prompt Engineering, RAG 
-• ML Development: PyTorch, TensorFlow, Scikit-learn, XGBoost, Model Evaluation & Tuning 
-• Vector Search: FAISS, Embeddings, Semantic Search 
-• Cloud & Deployment: GCP (Dataproc, BigQuery, Cloud Run), Docker, Kubernetes, CI/CD 
-• Data Engineering & NLP: SQL, PySpark, Apache Spark, Document Chunking, Text Classification, NLP Pipelines 
-• Security & Best Practices: Secure Coding, Version Control, Agile Development 
-• Tools & Collaboration: Jupyter, VSCode, GitHub, Linux
+Programming & APIs: Python, FastAPI, Flask, Git, REST APIs, Asynchronous Data Flows
+GenAI & LLMs: GPT-4, Hugging Face Transformers, LangChain, Prompt Engineering, RAG
+ML Development: PyTorch, TensorFlow, Scikit-learn, XGBoost, Model Evaluation & Tuning
+Vector Search: FAISS, Embeddings, Semantic Search
+Cloud & Deployment: GCP (Dataproc, BigQuery, Cloud Run), Docker, Kubernetes, CI/CD
+Data Engineering & NLP: SQL, PySpark, Apache Spark, Document Chunking, Text Classification, NLP Pipelines
+Security & Best Practices: Secure Coding, Version Control, Agile Development
+Tools & Collaboration: Jupyter, VSCode, GitHub, Linux
 ============================================================
 
 ============================================================
 📄 Document 4
 🔖 Metadata: {'section': 'education', 'type': 'section'}
 📝 Content:
-Humber College, Toronto, ON 
-September 2024 – April 2025 
-Graduate Certificate in Artificial Intelligence with Machine Learning 
- 
-• Gained hands-on experience in supervised/unsupervised learning, deep learning, and reinforcement learning. 
-• Built and optimized models using scikit-learn, TensorFlow, Keras, and PyTorch. 
-• Worked on real-world problems in NLP, computer vision, and predictive analytics. 
-• Designed scalable ML pipelines, including data preprocessing, feature engineering, and hyperparameter tuning. 
-• Explored big data and distributed ML using Apache Spark, Google Cloud Dataproc, and Spark MLlib. 
-• Learned ML deployment techniques with Flask APIs, Docker, and basic Kubernetes for containerized inference. 
-Centennial College, Scarborough, ON 
-September 2023 – April 2024 
-Graduate Certificate in Mobile Application Development 
- 
-• Built native and cross-platform apps using Kotlin, Swift, JavaScript, and Flutter, applying MVVM and clean architecture 
-principle. 
-• Completed capstone project (SwiftTrend) with full-stack features: product search, PayPal integration, admin CRM, and 
-deployment via Android Studio & Xcode. 
-Maharashtra Institute of Technology ADT, Pune, India 
-July 2018 – July 2022 
-Bachelor of Technology in Computer Science & Engineering 
- 
-• Gained strong foundation in C++, Python, OOP, DBMS, assembly, and basic machine learning using scikit-learn. 
-• Developed Leafio (major project): a CNN-based plant disease detection app and published a research paper comparing 
-VGG16, Xception, and MobileNet architectures.
+Gained hands-on experience in supervised/unsupervised learning, deep learning, and reinforcement learning.
+Built and optimized models using scikit-learn, TensorFlow, Keras, and PyTorch.
+Worked on real-world problems in NLP, computer vision, and predictive analytics.
+Designed scalable ML pipelines, including data preprocessing, feature engineering, and hyperparameter tuning.
+Explored big data and distributed ML using Apache Spark, Google Cloud Dataproc, and Spark MLlib.
+Learned ML deployment techniques with Flask APIs, Docker, and basic Kubernetes for containerized inference.
+Built native and cross-platform apps using Kotlin, Swift, JavaScript, and Flutter, applying MVVM and clean architecture principle.
+Completed capstone project (SwiftTrend) with full-stack features: product search, PayPal integration, admin CRM, and deployment via Android Studio & Xcode. 
+Gained strong foundation in C++, Python, OOP, DBMS, assembly, and basic machine learning using scikit-learn.
+Developed Leafio (major project): a CNN-based plant disease detection app and published a research paper comparing VGG16, Xception, and MobileNet architectures.
 ============================================================
 
 ============================================================
 📄 Document 5
-🔖 Metadata: {'section': 'education', 'type': 'item'}
+🔖 Metadata: {'section': 'professional experience', 'type': 'section'}
 📝 Content:
-Toronto, ON 
-September 2024 – April 2025 
-Graduate Certificate in Artificial Intelligence with Machine Learning 
- 
-• Gained hands-on experience in supervised/unsupervised learning, deep learning, and reinforcement learning. 
-• Built and optimized models using scikit-learn, TensorFlow, Keras, and PyTorch. 
-• Worked on real-world problems in NLP, computer vision, and predictive analytics. 
-• Designed scalable ML pipelines, including data preprocessing, feature engineering, and hyperparameter tuning. 
-• Explored big data and distributed ML using Apache Spark, Google Cloud Dataproc, and Spark MLlib. 
-• Learned ML deployment techniques with Flask APIs, Docker, and basic Kubernetes for containerized inference. 
-Centennial College,
+Developed a real-time trash detection system using a YOLO Nano-based model, leveraging transfer learning.
+Led the data annotation process to create high-quality labeled training data, improving generalization and robustness across varied conditions.
+Applied targeted data augmentation to enhance dataset diversity and improve detection under environmental noise.
+Tuned model performance through extensive hyperparameter optimization, achieving mAP@50: 82, mAP@50–95: 0.51, precision: 0.85, and recall: 0.71 on validation sets.
+Designed and tested multiple training strategies to maximize real-world performance, enabling reliable deployment in resource-constrained robotic environments.
 ============================================================
 
 ============================================================
 📄 Document 6
-🔖 Metadata: {'section': 'education', 'type': 'item'}
+🔖 Metadata: {'section': 'projects', 'type': 'section'}
 📝 Content:
-Scarborough, ON 
-September 2023 – April 2024 
-Graduate Certificate in Mobile Application Development 
- 
-• Built native and cross-platform apps using Kotlin, Swift, JavaScript, and Flutter, applying MVVM and clean architecture 
-principle. 
-• Completed capstone project (SwiftTrend) with full-stack features: product search, PayPal integration, admin CRM, and 
-deployment via Android Studio & Xcode. 
-Maharashtra Institute of Technology ADT,
+RAG-Based Q&A System with LLM Integration
+Engineered a LangChain-powered Retrieval-Augmented Generation pipeline leveraging FAISS embeddings for domain-specific Q&A over private datasets.
+Implemented advanced retrieval enhancements including multi-query rewriting, semantic reranking, and sub-question decomposition to improve accuracy and context relevance.
+Deployed as a Flask API, enabling seamless integration into cloud-native workflows and supporting real-time, context-aware responses.
+AI Resume Tailor – GenAI-Powered Agent for Document Customization
+Developed an autonomous AI agent using GPT-4, LangChain, and python-docx to customize resumes dynamically based on job descriptions.
+Integrated vector search to effectively match job postings with resume content and implemented JSON-based prompt chaining to ensure structured, high-quality output.
+Containerized the application with Docker and deployed it on Google Cloud Platform (GCP), demonstrating scalable GenAI deployment best practices.
+Traffic Congestion Prediction using Big Data (GCP, PySpark, ELK)
+Designed a distributed PySpark pipeline processing 94.5M+ NYC DOT traffic records on GCP Dataproc for congestion level classification.
+Trained and tuned a Random Forest model with engineered temporal features, achieving ~85% accuracy.
+Packaged the model as a REST API, integrated with ELK Stack for real-time monitoring and analytics in production-like environments.
 ============================================================
 
 ============================================================
 📄 Document 7
-🔖 Metadata: {'section': 'education', 'type': 'item'}
+🔖 Metadata: {'section': 'projects', 'type': 'item'}
 📝 Content:
-Pune, India 
-July 2018 – July 2022 
-Bachelor of Technology in Computer Science & Engineering 
- 
-• Gained strong foundation in C++, Python, OOP, DBMS, assembly, and basic machine learning using scikit-learn. 
-• Developed Leafio (major project): a CNN-based plant disease detection app and published a research paper comparing 
-VGG16, Xception, and MobileNet architectures.
+RAG-Based Q&A System with LLM Integration
+Engineered a LangChain-powered Retrieval-Augmented Generation pipeline leveraging FAISS embeddings for domain-specific Q&A over private datasets.
+Implemented advanced retrieval enhancements including multi-query rewriting, semantic reranking, and sub-question decomposition to improve accuracy and context relevance.
+Deployed as a Flask API, enabling seamless integration into cloud-native workflows and supporting real-time, context-aware responses.
 ============================================================
 
 ============================================================
 📄 Document 8
-🔖 Metadata: {'section': 'professional experience', 'type': 'section'}
+🔖 Metadata: {'section': 'projects', 'type': 'item'}
 📝 Content:
-Machine Learning Engineer 
-January 2025 – April 2025 
-Kevares (Capstone project via Humber College AI Program) 
- 
-• Developed a real-time trash detection system using a YOLO Nano-based model, leveraging transfer learning. 
-• Led the data annotation process to create high-quality labeled training data, improving generalization and robustness 
-across varied conditions. 
-• Applied targeted data augmentation to enhance dataset diversity and improve detection under environmental noise. 
-• Tuned model performance through extensive hyperparameter optimization, achieving mAP@50: 82, mAP@50–95: 
-0.51, precision: 0.85, and recall: 0.71 on validation sets. 
-• Designed and tested multiple training strategies to maximize real-world performance, enabling reliable deployment in 
-resource-constrained robotic environments.
+AI Resume Tailor – GenAI-Powered Agent for Document Customization
+Developed an autonomous AI agent using GPT-4, LangChain, and python-docx to customize resumes dynamically based on job descriptions.
+Integrated vector search to effectively match job postings with resume content and implemented JSON-based prompt chaining to ensure structured, high-quality output.
+Containerized the application with Docker and deployed it on Google Cloud Platform (GCP), demonstrating scalable GenAI deployment best practices.
 ============================================================
 
 ============================================================
 📄 Document 9
-🔖 Metadata: {'section': 'professional experience', 'type': 'item'}
-📝 Content:
-Machine Learning Engineer 
-January 2025 – April 2025 
-Kevares (Capstone project via Humber College AI Program) 
- 
-• Developed a real-time trash detection system using a YOLO Nano-based model, leveraging transfer learning. 
-• Led the data annotation process to create high-quality labeled training data, improving generalization and robustness 
-across varied conditions. 
-• Applied targeted data augmentation to enhance dataset diversity and improve detection under environmental noise. 
-• Tuned model performance through extensive hyperparameter optimization, achieving mAP@50: 82, mAP@50–95: 
-0.51, precision: 0.85, and recall: 0.71 on validation sets. 
-• Designed and tested multiple training strategies to maximize real-world performance, enabling reliable deployment in 
-resource-constrained robotic environments.
-============================================================
-
-============================================================
-📄 Document 10
-🔖 Metadata: {'section': 'projects', 'type': 'section'}
-📝 Content:
-RAG-Based Q&A System with LLM Integration 
-• Engineered a LangChain-powered Retrieval-Augmented Generation pipeline leveraging FAISS embeddings for domain-
-specific Q&A over private datasets. 
-• Implemented advanced retrieval enhancements including multi-query rewriting, semantic reranking, and sub-question 
-decomposition to improve accuracy and context relevance. 
-• Deployed as a Flask API, enabling seamless integration into cloud-native workflows and supporting real-time, context-
-aware responses. 
-AI Resume Tailor – GenAI-Powered Agent for Document Customization 
-• Developed an autonomous AI agent using GPT-4, LangChain, and python-docx to customize resumes dynamically 
-based on job descriptions. 
-• Integrated vector search to effectively match job postings with resume content and implemented JSON-based prompt 
-chaining to ensure structured, high-quality output. 
-• Containerized the application with Docker and deployed it on Google Cloud Platform (GCP), demonstrating scalable 
-GenAI deployment best practices. 
-Traffic Congestion Prediction using Big Data (GCP, PySpark, ELK) 
-• Designed a distributed PySpark pipeline processing 94.5M+ NYC DOT traffic records on GCP Dataproc for congestion 
-level classification. 
-• Trained and tuned a Random Forest model with engineered temporal features, achieving ~85% accuracy. 
-• Packaged the model as a REST API, integrated with ELK Stack for real-time monitoring and analytics in production-like 
-environments.
-============================================================
-
-============================================================
-📄 Document 11
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
-📝 Content:
-RAG-Based Q&A System with LLM Integration 
-• Engineered a LangChain-powered Retrieval-Augmented Generation pipeline leveraging FAISS embeddings for domain-
-specific Q&A over private datasets. 
-• Implemented advanced retrieval enhancements including multi-query rewriting, semantic reranking, and sub-question 
-decomposition to improve accuracy and context relevance. 
-• Deployed as a Flask API, enabling seamless integration into cloud-native workflows and supporting real-time, context-
-aware responses.
-============================================================
-
-============================================================
-📄 Document 12
-🔖 Metadata: {'section': 'projects', 'type': 'item'}
-📝 Content:
-AI Resume Tailor – GenAI-Powered Agent for Document Customization 
-• Developed an autonomous AI agent using GPT-4, LangChain, and python-docx to customize resumes dynamically 
-based on job descriptions. 
-• Integrated vector search to effectively match job postings with resume content and implemented JSON-based prompt 
-chaining to ensure structured, high-quality output. 
-• Containerized the application with Docker and deployed it on Google Cloud Platform (GCP), demonstrating scalable 
-GenAI deployment best practices.
-============================================================
-
-============================================================
-📄 Document 13
 🔖 Metadata: {'section': 'projects', 'type': 'item'}
 📝 Content:
 Traffic Congestion Prediction using Big Data (GCP,
 ============================================================
 
 ============================================================
-📄 Document 14
+📄 Document 10
 🔖 Metadata: {'section': 'projects', 'type': 'item'}
 📝 Content:
 PySpark,
 ============================================================
 
 ============================================================
-📄 Document 15
+📄 Document 11
 🔖 Metadata: {'section': 'projects', 'type': 'item'}
 📝 Content:
-ELK) 
-• Designed a distributed
+ELK)
+Designed a distributed
 ============================================================
 
 ============================================================
-📄 Document 16
+📄 Document 12
 🔖 Metadata: {'section': 'projects', 'type': 'item'}
 📝 Content:
-PySpark pipeline processing 94.5M+ NYC DOT traffic records on GCP Dataproc for congestion 
-level classification. 
-• Trained and tuned a Random Forest model with engineered temporal features, achieving ~85% accuracy. 
-• Packaged the model as a REST API, integrated with ELK Stack for real-time monitoring and analytics in production-like 
-environments.
+PySpark pipeline processing 94.5M+ NYC DOT traffic records on GCP Dataproc for congestion level classification.
+Trained and tuned a Random Forest model with engineered temporal features, achieving ~85% accuracy.
+Packaged the model as a REST API, integrated with ELK Stack for real-time monitoring and analytics in production-like environments.
 ============================================================
 

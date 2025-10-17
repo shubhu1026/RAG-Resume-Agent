@@ -38,7 +38,8 @@ def process_resume_file(file_obj, job_description, app_state=None):
     app_state.update({
         "workflow": workflow,          # preserve workflow for chat
         "resume_text": safe_text,      # for skills comparison
-        "job_description": jd_summary  # optional summary
+        "job_description": jd_summary,  # optional summary
+        # "resume_file": file_obj,   # store the file object
     })
 
     return "✅ Resume processed!", app_state, metadata_dict, jd_summary

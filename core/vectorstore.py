@@ -17,29 +17,48 @@ embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
 def update_vectorstore(resume_text=None, job_desc_text=None, persist_directory=VECTORSTORE_DIR):
     """
-    Deletes the old vector store and rebuilds it with new resume/job description.
+    Completely removes old Chroma vectorstore and rebuilds it
+    with the new resume and/or job description documents.
     """
-    # 1️⃣ Delete old vector store
-    shutil.rmtree(persist_directory, ignore_errors=True)
-    
-    # 2️⃣ Prepare documents
+    # 1️⃣ Delete old vectorstore safely
+    if os.path.exists(persist_directory):
+        shutil.rmtree(persist_directory, ignore_errors=True)
+    os.makedirs(persist_directory, exist_ok=True)
+
+    # 2️⃣ Prepare text documents
     docs = []
+    splitter = RecursiveCharacterTextSplitter(chunk_size=900, chunk_overlap=150)
+
     if resume_text:
-        docs.append({"text": resume_text, "type": "resume"})
+        resume_chunks = splitter.split_text(resume_text)
+        docs.extend([
+            Document(page_content=chunk, metadata={"source": "resume"})
+            for chunk in resume_chunks
+        ])
+
     if job_desc_text:
-        docs.append({"text": job_desc_text, "type": "job_description"})
-    
-    # 3️⃣ Create vector store
+        jd_chunks = splitter.split_text(job_desc_text)
+        docs.extend([
+            Document(page_content=chunk, metadata={"source": "job_description"})
+            for chunk in jd_chunks
+        ])
+
+    if not docs:
+        raise ValueError("No text provided to rebuild vectorstore.")
+
+    save_docs_to_file(docs, filename="updated_docs.txt")
+
+    # 3️⃣ Recreate the vectorstore
     vectorstore = Chroma.from_documents(
-        documents=[d["text"] for d in docs],
+        documents=docs,
         embedding=embeddings,
         persist_directory=persist_directory,
         collection_name=COLLECTION_NAME or "resume"
     )
-    
-    # 4️⃣ Persist
+
+    # 4️⃣ Persist and confirm
     vectorstore.persist()
-    print("✅ Vector store rebuilt successfully!")
+    print(f"✅ Vectorstore rebuilt successfully with {len(docs)} documents!")
     return vectorstore
 
 def save_docs_to_file(docs, filename="chunked_resume.txt"):

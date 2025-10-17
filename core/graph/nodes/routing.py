@@ -33,7 +33,7 @@ def route_question(state, vector_db):
 
     # Step 3: LLM-based routing via RunnableSequence
     route_msg = routing_runnable.invoke({
-        "user_question": question,
+        "user_question": question,          
         "metadata_summary": state.get("metadata_summary", ""),
         "jd_summary": state.get("job_description", ""),
         "conversation_history": format_history_for_routing(state.get("chat_history", [])),
