@@ -10,7 +10,6 @@ LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
 LANGCHAIN_PROJECT = os.getenv("LANGCHAIN_PROJECT", "RAG-Resume-Agent")
 LANGCHAIN_TRACING = os.getenv("LANGCHAIN_TRACING", "true")
 
-
 # Model Settings
 MODEL_NAME = "gpt-4o-mini"
 TEMPERATURE = 0

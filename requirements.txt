@@ -15,4 +15,4 @@ chromadb
 langgraph
 chardet
 python-docx
-
+PyMuPDF

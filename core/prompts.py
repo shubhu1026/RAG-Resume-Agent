@@ -80,6 +80,8 @@ Your task is to select one route: **VECTORSTORE**, **WEBSEARCH**, or **LLM**.
    - References previous conversation turns about resume-related topics.
    - Includes first-person terms like *my, me, I* referring to professional background.
    - Mentions or implies something that exists in metadata (even indirectly).
+   - Includes first-person terms like my, me, I referring to professional goals, career aspirations, or suitability for roles, even if not in metadata.
+
 
    ✅ Examples:
    - “Summarize my projects.”
