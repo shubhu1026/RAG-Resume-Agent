@@ -1,5 +1,5 @@
-from core.skills_graph.skills_workflows import build_skills_flow
-from core.skills_graph.skills_workflows import SkillsComparison 
+from core.skills_graph.skills_workflow import build_skills_flow
+from core.skills_graph.skills_workflow import SkillsComparison 
 from langchain.output_parsers import PydanticOutputParser
 
 def skills_fit_fn(state, metadata_state, jd_state):
